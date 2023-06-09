@@ -2,6 +2,8 @@ package net.musecom.spbbs.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,14 @@ public class SpController {
 	
 	//모든 command가 갖고 있는 인터페이스 타입을 선언
 	SpCommand command;
+	
+	//jdbc Spring template 
+	public JdbcTemplate template;
+
+	@Autowired
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
   
 	@RequestMapping("/list")
 	public String list(Model model) {
