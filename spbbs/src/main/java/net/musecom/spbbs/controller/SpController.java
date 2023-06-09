@@ -18,6 +18,7 @@ import net.musecom.spbbs.command.SpReplyokCommand;
 import net.musecom.spbbs.command.SpUpdateCommand;
 import net.musecom.spbbs.command.SpUpdateokCommand;
 import net.musecom.spbbs.command.SpWriteCommand;
+import net.musecom.spbbs.util.Static;
 
 @Controller
 public class SpController {
@@ -31,6 +32,7 @@ public class SpController {
 	@Autowired
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
+		Static.template = this.template;
 	}
   
 	@RequestMapping("/list")

@@ -11,15 +11,21 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import net.musecom.spbbs.dto.SpDto;
+import net.musecom.spbbs.util.Static;
 
 //db 접근 클래스
 public class SpDao {
   
 	DataSource dataSource;
+	JdbcTemplate template = null;
 	
 	//생성자에서 DB 접속
 	public SpDao() {
+	//나중에 다 지움	
 	   try {
 		   
 		   Context context = new InitialContext();
@@ -28,6 +34,8 @@ public class SpDao {
 	   }catch(NamingException e) {
 		   e.printStackTrace();
 	   }
+	 //여기까지
+	   template = Static.template;
 	}
 	
 	//글쓰기
@@ -286,7 +294,11 @@ public class SpDao {
 	
 	//데이터를 받아서 SpDto에 담음
 	public ArrayList<SpDto> list(){
-	  
+		
+		String sql = "select * from spboard order by s_group desc, s_step asc";
+		return (ArrayList<SpDto>) template.query(sql, new BeanPropertyRowMapper<SpDto>(SpDto.class));
+
+/*		
 	   ArrayList<SpDto> dtos = new ArrayList<SpDto>(); 
 	
    	   Connection conn = null;
@@ -327,8 +339,10 @@ public class SpDao {
 			   if(conn != null) conn.close();
 		   }catch(Exception eee) {}
 	   }
-	 
+ 
 	   return dtos;
+	   */
+	
 	} //list
 	
 	public void delete(String num) {
