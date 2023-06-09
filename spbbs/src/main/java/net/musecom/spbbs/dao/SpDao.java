@@ -188,6 +188,33 @@ public class SpDao {
 		return dto;
 	}
 	
+	public void updateok(String num, String uname, String upass, String title, String content) {
+
+        int inum = Integer.parseInt(num);		
+		String sql = "update spboard set uname=?, upass=?, title=?, content=? where num = ?";
+	   	Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, uname);
+			pstmt.setString(2, upass);
+			pstmt.setString(3, title);
+			pstmt.setString(4, content);
+			pstmt.setInt(5, inum);
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception ee) {}			
+		}
+		
+	}
+	
 	private void replyUpdate(int s_group, int s_step) {
 		String sql = "update spboard set s_step = s_step + 1 where s_group = ? and s_step >= ?";
 		Connection conn = null;
@@ -303,6 +330,28 @@ public class SpDao {
 	 
 	   return dtos;
 	} //list
+	
+	public void delete(String num) {
+		
+		   int iNum = Integer.parseInt(num);
+	   	   Connection conn = null;
+		   PreparedStatement pstmt = null;
+		   try {		   
+			   conn = dataSource.getConnection();
+			   String sql = "delete from spboard where num = ?";
+			   pstmt = conn.prepareStatement(sql);
+			   pstmt.setInt(1, iNum);
+			   pstmt.executeUpdate();
+			   
+		   }catch(Exception e) {
+			   e.printStackTrace();
+		   }finally {
+			   try {
+				   if(pstmt != null) pstmt.close();
+				   if(conn != null) conn.close();
+			   }catch(Exception eee) {}
+		   }
+	}
 	
 	private void hitAdd(int num) {
 		Connection conn = null;

@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import net.musecom.spbbs.command.SpCommand;
+import net.musecom.spbbs.command.SpDeleteCommand;
 import net.musecom.spbbs.command.SpDetailCommand;
 import net.musecom.spbbs.command.SpListCommand;
 import net.musecom.spbbs.command.SpReplyCommand;
 import net.musecom.spbbs.command.SpReplyokCommand;
 import net.musecom.spbbs.command.SpUpdateCommand;
+import net.musecom.spbbs.command.SpUpdateokCommand;
 import net.musecom.spbbs.command.SpWriteCommand;
 
 @Controller
@@ -91,4 +93,27 @@ public class SpController {
 		
 		return "update";
 	}
+	
+	@RequestMapping(value="/updateok", method=RequestMethod.POST)
+	public String updateok(HttpServletRequest request, Model model) {
+		System.out.println("updateok()");
+		
+		model.addAttribute("request", request);
+		command = new SpUpdateokCommand();
+		command.execute(model);
+		
+		return "redirect:list";
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest request, Model model) {
+		System.out.println("delete()");
+		
+		model.addAttribute("request", request);
+		command = new SpDeleteCommand();
+		command.execute(model);
+	 
+		return "redirect:list";
+	}
+	
 }
