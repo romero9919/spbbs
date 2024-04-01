@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+	<Resource
+	 name="jdbc/spbbs"
+	 auth="Container"
+	 type="javax.sql.DataSource"
+	 username="admin"
+	 password="080401familyrome*"
+	 url="jdbc:mysql://romedb.ccjigj87jjfn.ap-northeast-2.rds.amazonaws.com:3306/mybbs?useUnicode=true&amp;characterEncoding=utf-8"
+	 driverClassName="com.mysql.cj.jdbc.Driver"
+	 factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+	 maxActive="200"
+	 maxIdle="20"
+	 removeAbandoned="true"
+	 />
+</Context>
