@@ -23,17 +23,17 @@ public class Pagination {
    }
 
    public void setPdto(PageDto pdto) {
-	  this.pdto = pdto;
+	   	this.pdto = pdto;
+	  	calcData();
    }
    
 	public int getTotalCount() {
-	return totalCount;
+		return totalCount;
 	}
 	
 	public void setTotalCount() {
 		SpDao dao = new SpDao();
 		this.totalCount = dao.totalRecord();
-		calcData();
 	}
 		
 	public int getStartPage() {
@@ -73,7 +73,7 @@ public class Pagination {
 	}
 	
 	
-	public void setDisplayPageNum(int  displayPageNum) {
+	public void setDisplayPageNum(int displayPageNum) {
 		if(displayPageNum == 0) {
 		   displayPageNum = 10;
 		}

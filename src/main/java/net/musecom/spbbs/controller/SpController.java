@@ -13,8 +13,6 @@ import net.musecom.spbbs.command.SpCommand;
 import net.musecom.spbbs.command.SpDeleteCommand;
 import net.musecom.spbbs.command.SpDetailCommand;
 import net.musecom.spbbs.command.SpListCommand;
-//import net.musecom.spbbs.command.SpReplyCommand;
-//import net.musecom.spbbs.command.SpReplyokCommand;
 import net.musecom.spbbs.command.SpUpdateCommand;
 import net.musecom.spbbs.command.SpUpdateokCommand;
 import net.musecom.spbbs.command.SpWriteCommand;
@@ -42,13 +40,14 @@ public class SpController {
 		model.addAttribute("request", request);
 		command = new SpListCommand();
 		command.execute(model);
-		
-//		PageDto pdto = new PageDto();
-//		Pagination pages = new Pagination();
-//		pages.setDisplayPageNum(10);
-//		pages.setTotalCount();
-//		pages.setPdto(pdto);
-//		model.addAttribute("pages", pages);
+		PageDto pdto = new PageDto();
+        pdto.setPage(pdto.getPage());
+		Pagination pages = new Pagination();
+		pages.setDisplayPageNum(10);
+		pages.setTotalCount();
+		pages.setPdto(pdto);
+		pages.makeQuery(1);
+		model.addAttribute("pages", pages);
 	    return "list";	
 	}
 	

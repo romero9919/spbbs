@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="resources/css/style.css" />
+<script src="resources/js/jquery.min.js"></script>
 </head>
 <body>
 <div class="container mt-5">
@@ -63,7 +64,7 @@
 		        
 		        <c:forEach begin="${pages.startPage }" end="${pages.endPage }" var="idx"> 
 		         <li class="page-item active">
-		             <a href="#" class="page-link">${idx }</a>
+		             <a href="list?page=${idx }" class="page-link">${idx }</a>
 		         </li>   
 		        </c:forEach>
 		         
@@ -74,11 +75,7 @@
 		        </c:if>       
    
 		     </ul>
-		     
-		   전체:  ${pages.totalCount } <br />
-		   시작: ${pages.startPage }<br />
-		   끝:  ${pages.endPage }<br />
-		   목록:  ${pages.displayPageNum }<br />
+		   
 	     </div>
 	     <div class="col-md-3">	    
 		     <div class="button-group">

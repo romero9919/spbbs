@@ -31,7 +31,7 @@
              <div class="invalid-feedback">제목을 입력하세요.</div>
          </div>      
          <div class="col-md-12 mt-5">
-             <textarea id="contents" name="contents"></textarea>
+             <input type="text" id="contents" class="form-control" name="contents" required></input>
          </div>
          
          <input type="hidden" name="userid" value="guest">

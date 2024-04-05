@@ -65,17 +65,6 @@ public class SpDao {
 	
 	}
 	
-//	private void groupUpdate(int id) {
-//		String sql ="update ndboard where id = ?";
-//		template.update(sql, new PreparedStatementSetter() {
-//		
-//			@Override
-//			public void setValues(PreparedStatement pstmt) throws SQLException{
-//				pstmt.setInt(1, id);
-//				pstmt.setInt(2, id);
-//			}
-//		}); 	
-//	}
 	
 //	
 //	public SpDto reply(String cNum) {
@@ -254,12 +243,12 @@ public class SpDao {
 
 	public ArrayList<SpDto> list(String pg){
 		
-		int listCount = 15;
+		int listCount = 10;
 		int page = Integer.parseInt(pg);
 		int min = ( page -1 ) * listCount;
 		String limit = " limit " + min + " , " + listCount;
 		
-		String sql = "select * from ndboard order by orNum desc, grNum asc" + limit;
+		String sql = "select * from ndboard order by num desc" + limit;
 		return (ArrayList<SpDto>) template.query(sql, new BeanPropertyRowMapper<SpDto>(SpDto.class));
 
 	} //list

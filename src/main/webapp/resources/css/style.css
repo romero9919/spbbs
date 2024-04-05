@@ -87,3 +87,7 @@ table.bbsList{
 .detailview img{
 	max-width:100%;
 }
+
+#contents{
+	height: 100px;
+}
