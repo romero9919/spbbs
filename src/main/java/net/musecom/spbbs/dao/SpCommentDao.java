@@ -37,21 +37,21 @@ public class SpCommentDao {
 	
 	public ArrayList<SpCommentDto> list(){
 		
-		String sql = "select * from ndboard_comment where ndboard_num = ? order by num desc";
+		String sql = "select * from ndboard_comment where ndboardNum = ? order by num desc";
 		return (ArrayList<SpCommentDto>) template.query(sql, new BeanPropertyRowMapper<SpCommentDto>(SpCommentDto.class));
 
 	}
 	
-	public void write(int ndboard_num, String username, String userpass, String userid, String comment) {
+	public void write(int ndboardNum, String username, String userpass, String userid, String comment) {
 
 		template.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) 
 					throws SQLException {
-				String sql = "insert into ndboard_comment (ndboard_num, username, userpass, userid, comment) values (?,?,?,?,?)";
+				String sql = "insert into ndboard_comment (ndboardNum, username, userpass, userid, comment) values (?,?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-				pstmt.setInt(1, ndboard_num);
+				pstmt.setInt(1, ndboardNum);
 				pstmt.setString(2, username);
 				pstmt.setString(3, userpass);
 				pstmt.setString(4, userid);

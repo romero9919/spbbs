@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class SpCommentDto {
 	
 	private int num;
-	private int ndboard_num;
+	private int ndboardNum;
 	private String username;
 	private String userpass;
 	private String userid;
@@ -17,11 +17,11 @@ public class SpCommentDto {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public int getNdboard_num() {
-		return ndboard_num;
+	public int getNdboardNum() {
+		return ndboardNum;
 	}
-	public void setNdboard_num(int ndboard_num) {
-		this.ndboard_num = ndboard_num;
+	public void setNdboard_num(int ndboardNum) {
+		this.ndboardNum = ndboardNum;
 	}
 	public String getUsername() {
 		return username;
@@ -56,7 +56,7 @@ public class SpCommentDto {
 	
 	@Override
 	public String toString() {
-		return "SpCommentDto [num=" + num + ", ndboard_num=" + ndboard_num + ", username=" + username + ", userpass="
+		return "SpCommentDto [num=" + num + ", ndboardNum=" + ndboardNum + ", username=" + username + ", userpass="
 				+ userpass + ", userid=" + userid + ", comment=" + comment + ", cdate=" + cdate + "]";
 	}
 	
